@@ -4,6 +4,12 @@ require('dotenv').config(); // Loads variables from .env (only for local dev)
 const { Client, GatewayIntentBits } = require('discord.js');
 const OpenAI = require("openai");
 
+
+// 🔹 Debug: Check if Railway is passing environment variables
+console.log("OpenAI key:", process.env.OPENAI_API_KEY ? "loaded ✅" : "missing ❌");
+console.log("Discord token:", process.env.DISCORD_TOKEN ? "loaded ✅" : "missing ❌");
+
+
 // Create OpenAI client (v4 style)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY   // Key comes from .env or Railway Variables
@@ -92,3 +98,4 @@ client.on("messageCreate", async (msg) => {
 
 // 🔹 Use env var for login token
 client.login(process.env.DISCORD_TOKEN);
+
